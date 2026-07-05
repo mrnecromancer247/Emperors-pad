@@ -85,6 +85,24 @@ All settings can be changed without rebuilding.
 
 ---
 
+## Recommended companion mods
+
+Emperor's-pad only restores controller functionality. For a more
+comfortable overall experience, it's recommended to also use the
+**Widescreen WSGF mod**.
+
+**For a stable 60 FPS:** in `.../GameData/Indy/vars.cfg`, don't set
+`fpsLimit` to 60 — set it to **0** instead, and cap the framerate
+externally with RivaTuner Statistics Server, or through DgVoodoo2's own
+frame limiter options.
+
+**DgVoodoo2** does a decent job smoothing out the engine's aggressive draw
+calls in DX12 mode, but test which backend actually runs best on your
+system — your mileage may vary. DgVoodoo2 also stretches cutscenes and
+loading screens to fill the whole screen, which is a nice bonus.
+
+---
+
 ## Troubleshooting
 
 Set `Log=1` and optionally `DumpAxes=1` in `dinput8.ini` — this writes
