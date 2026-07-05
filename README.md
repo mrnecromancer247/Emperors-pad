@@ -40,6 +40,8 @@ This layout is taken from the original PS2 version of the game.
 | Wall Hug Peek Right | Start |
 | Walk | *(leave blank, or bind to a keyboard key)* |
 
+> **Note:** Wall Hug Peek only works when Indy is leaned against a wall near a corner. It's not clear how this is handled on console, but on PC it's mapped to two separate buttons (left/right).
+
 > **Note:** Walk doesn't need a gamepad binding — movement is analog, so the left stick already controls both walking and running by how far it's pushed.
 
 > **Note:** The Menu button is hardcoded to LS / L3 and cannot be rebound. Reset Camera is hardcoded to RS / R3 — tap R3 to reset the camera, hold it for first-person view.
@@ -71,7 +73,36 @@ The engine also has its own quirks:
 
 ## Configuration (`dinput8.ini`)
 
-All settings can be changed without rebuilding.
+All settings can be changed without rebuilding, and are grouped under
+`[SDL]` in the ini file.
+
+- **`MoveDeadzone` / `CameraDeadzone`** — how far a stick has to move off
+  center before it registers at all. Raise these if a stick drifts or
+  reports tiny values at rest; lower them if the character feels
+  unresponsive right at the edge of the deadzone.
+- **`CameraSensitivity`** — how fast the camera turns/looks for a given
+  stick deflection. Independent of deadzone.
+- **`MoveStickRange` / `CameraStickRange`** — compensates for a worn or
+  loose stick that never quite reaches full physical deflection, by
+  stretching its actual travel back out to 100% output.
+- **`MoveRadialScale`** — fixes a common gamepad issue where pushing the
+  left stick diagonally only gives ~70% output on each axis (since a
+  round stick's travel is a circle, not a square). With this on, a full
+  diagonal push reaches full output on both axes, so run/diagonal
+  movement triggers reliably.
+- **`MoveSmoothing`** — smooths out left-stick jitter using a rolling
+  average. Adds a small amount of input lag, so keep it low unless you
+  specifically notice twitchy movement.
+- **`AxisSnapRatio`** — when the right stick is pushed cleanly along one
+  axis, a little signal naturally leaks into the other axis. If the game
+  reads that leakage as unwanted camera drift, this snaps the weaker axis
+  to zero once one axis clearly dominates.
+- **`UseHIDAPI`** — switches SDL's controller backend between its plain
+  joystick driver (0, default) and its dedicated PS4/PS5 HIDAPI parser
+  (1). Only relevant for DualSense/DualShock; try flipping it if the
+  right stick or triggers misbehave on those pads.
+
+Reference table:
 
 | Key | Default | Description |
 |---|---|---|
