@@ -421,11 +421,13 @@ static BOOL LoadSDL(void)
             p_SDL_SetHint("SDL_JOYSTICK_HIDAPI_PS5", "1");
             p_SDL_SetHint("SDL_JOYSTICK_HIDAPI_PS4", "1");
         } else {
-            /* Fully disable SDL's proprietary DualSense HIDAPI parser - it
-               has known field-offset bugs where gyro/accel data leaks into
-               the stick axes. Fall back to the plain Windows/SDL joystick
-               driver instead. */
-            p_SDL_SetHint("SDL_JOYSTICK_HIDAPI", "0");
+            /* Only disable HIDAPI for PS4/PS5 - DualSense has known
+               field-offset bugs there where gyro/accel data leaks into
+               the stick axes. Leave the master SDL_JOYSTICK_HIDAPI hint
+               and other pad types (Switch Pro, Xbox, etc.) alone - their
+               HIDAPI drivers are correct and often required; forcing
+               them onto the plain joystick driver breaks those pads
+               instead of fixing anything. */
             p_SDL_SetHint("SDL_JOYSTICK_HIDAPI_PS5", "0");
             p_SDL_SetHint("SDL_JOYSTICK_HIDAPI_PS4", "0");
         }
