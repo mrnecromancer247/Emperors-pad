@@ -1,0 +1,12 @@
+LIBRARY dinput8.dll
+EXPORTS
+    DirectInput8Create
+    DllCanUnloadNow
+    DllGetClassObject
+    DllRegisterServer
+    DllUnregisterServer
+    c_dfDIJoystick   = dinput8_orig.c_dfDIJoystick
+    c_dfDIJoystick2  = dinput8_orig.c_dfDIJoystick2
+    c_dfDIMouse      = dinput8_orig.c_dfDIMouse
+    c_dfDIMouse2     = dinput8_orig.c_dfDIMouse2
+    c_dfDIKeyboard   = dinput8_orig.c_dfDIKeyboard

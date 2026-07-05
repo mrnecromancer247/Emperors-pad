@@ -1,0 +1,5 @@
+*.o
+*.obj
+dinput8_orig.dll
+dinput8_proxy.log
+build/
