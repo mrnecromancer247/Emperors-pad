@@ -19,6 +19,8 @@ Tested with DualSense and 8BitDo. Works on both GOG and Steam versions.
 
 ## Recommended control layout
 
+This layout is taken from the original PS2 version of the game.
+
 | Action | Button |
 |---|---|
 | Primary Attack | A / Cross |
@@ -40,7 +42,7 @@ Tested with DualSense and 8BitDo. Works on both GOG and Steam versions.
 
 > **Note:** Walk doesn't need a gamepad binding — movement is analog, so the left stick already controls both walking and running by how far it's pushed.
 
-> **Note:** The Menu button is hardcoded to LS / L3 (matching the original PS2 and Xbox versions) and cannot be rebound. Reset Camera is hardcoded to RS / R3 — tap R3 to reset the camera, hold it for first-person view.
+> **Note:** The Menu button is hardcoded to LS / L3 and cannot be rebound. Reset Camera is hardcoded to RS / R3 — tap R3 to reset the camera, hold it for first-person view.
 
 ---
 
